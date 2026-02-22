@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday L! 🧸</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 50%, #ffcfcf 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .floating-bear {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        .bear-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .bear-2 { top: 20%; right: 10%; animation-delay: 3s; font-size: 3rem; }
+        .bear-3 { bottom: 30%; left: 8%; animation-delay: 6s; }
+        .bear-4 { bottom: 10%; right: 5%; animation-delay: 9s; font-size: 2.5rem; }
+        .bear-5 { top: 50%; left: 2%; animation-delay: 12s; }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.15), 
+                        0 0 0 1px rgba(220, 38, 38, 0.05);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+            transition: transform 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #dc2626, #ef4444, #f87171, #dc2626);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .main-bear {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 10px 20px rgba(220, 38, 38, 0.2));
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            color: #dc2626;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(220, 38, 38, 0.1);
+        }
+        
+        .subtitle {
+            color: #991b1b;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .message {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #dc2626;
+            text-align: left;
+            position: relative;
+        }
+        
+        .message p {
+            color: #7f1d1d;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .message p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: #dc2626;
+            font-weight: 700;
+        }
+        
+        .doctor-nod {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #dc2626;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .interactive-section {
+            margin-top: 40px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .hidden-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.5s;
+            opacity: 0;
+            margin-top: 0;
+        }
+        
+        .hidden-message.show {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 30px;
+        }
+        
+        .secret-content {
+            background: #dc2626;
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .secret-content::before {
+            content: '🧸';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+        
+        .heart {
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            30% { transform: scale(1.1); }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #dc2626;
+            position: absolute;
+            animation: confetti-fall 3s linear forwards;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #991b1b;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .teddy-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .card { padding: 30px 20px; }
+            .main-bear { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-bear bear-1">🧸</div>
+    <div class="floating-bear bear-2">🐻</div>
+    <div class="floating-bear bear-3">🧸</div>
+    <div class="floating-bear bear-4">🐻</div>
+    <div class="floating-bear bear-5">🧸</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="main-bear">🧸</div>
+            
+            <h1>Happy Birthday L!</h1>
+            <div class="subtitle">From your friend across the Discord void <span class="heart">❤️</span></div>
+            
+            <div class="message">
+                <p>Hey L!</p>
+                <p>Even though we've never met IRL and I only know you as "L" from the Netherlands, I wanted to make something special for your birthday. Here's to another year of amazing conversations, late-night Discord hangs, and whatever adventures come your way!</p>
+                <p>I know you're <span class="highlight">going to be an incredible doctor</span> someday — the world needs more healers with kind hearts. <span style="font-size: 1.2rem;">🩺</span></p>
+                <div style="text-align: center;">
+                    <span class="doctor-nod">Future Dr. L <span style="font-size: 1.2rem;">✨</span></span>
+                </div>
+            </div>
+            
+            <div class="teddy-row">
+                <span>🧸</span>
+                <span>❤️</span>
+                <span>🧸</span>
+                <span>❤️</span>
+                <span>🧸</span>
+            </div>
+            
+            <div class="interactive-section">
+                <button class="btn" onclick="revealSecret()">Open Your Birthday Surprise 🎁</button>
+                
+                <div id="secret" class="hidden-message">
+                    <div class="secret-content">
+                        <p style="font-size: 1.4rem; margin-bottom: 15px; font-weight: 700;">A Virtual Prescription for L:</p>
+                        <p>• Take two doses of self-care daily<br>
+                        • Apply generous amounts of joy as needed<br>
+                        • Surround yourself with teddy bears (obviously)<br>
+                        • Remember that you're appreciated more than you know<br>
+                        • Refill as needed throughout the year</p>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.9;">Signed: Your Discord friend who hopes your day is as warm and cozy as a bear hug 🧸❤️</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>Made with code, caffeine, and good vibes | Deployed with care</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function revealSecret() {
+            const secret = document.getElementById('secret');
+            const btn = document.querySelector('.btn');
+            
+            secret.classList.add('show');
+            btn.style.display = 'none';
+            
+            createConfetti();
+            
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => createFloatingBear(), i * 200);
+            }
+        }
+        
+        function createConfetti() {
+            const colors = ['#dc2626', '#ef4444', '#f87171', '#fca5a5', '#fecaca'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 50);
+            }
+        }
+        
+        function createFloatingBear() {
+            const bear = document.createElement('div');
+            bear.textContent = '🧸';
+            bear.style.position = 'fixed';
+            bear.style.fontSize = (Math.random() * 2 + 2) + 'rem';
+            bear.style.left = Math.random() * 100 + 'vw';
+            bear.style.top = '-50px';
+            bear.style.zIndex = '100';
+            bear.style.pointerEvents = 'none';
+            bear.style.animation = 'confetti-fall 4s linear forwards';
+            document.body.appendChild(bear);
+            
+            setTimeout(() => bear.remove(), 4000);
+        }
+        
+        document.querySelector('.card').addEventListener('mousemove', (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            e.currentTarget.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2) / 50}deg) rotateY(${-(x - rect.width/2) / 50}deg)`;
+        });
+        
+        document.querySelector('.card').addEventListener('mouseleave', (e) => {
+            e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    </script>
+</body>
+</html>
