@@ -115,7 +115,24 @@
             color: #991b1b;
             font-size: 1.3rem;
             font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .from-signature {
+            color: #dc2626;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .from-signature::before,
+        .from-signature::after {
+            content: '✨';
+            font-size: 0.9rem;
         }
         
         .message {
@@ -271,6 +288,7 @@
             h1 { font-size: 2rem; }
             .card { padding: 30px 20px; }
             .main-bear { font-size: 3.5rem; }
+            .from-signature { font-size: 1rem; }
         }
     </style>
 </head>
@@ -287,6 +305,7 @@
             
             <h1>Happy Birthday L!</h1>
             <div class="subtitle">From your friend across the Discord void <span class="heart">❤️</span></div>
+            <div class="from-signature">From Mr.X</div>
             
             <div class="message">
                 <p>Hey L!</p>
@@ -316,13 +335,13 @@
                         • Surround yourself with teddy bears (obviously)<br>
                         • Remember that you're appreciated more than you know<br>
                         • Refill as needed throughout the year</p>
-                        <p style="margin-top: 15px; font-style: italic; opacity: 0.9;">Signed: Your Discord friend who hopes your day is as warm and cozy as a bear hug 🧸❤️</p>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.9;">Signed: Mr.X — Your Discord friend who hopes your day is as warm and cozy as a bear hug 🧸❤️</p>
                     </div>
                 </div>
             </div>
             
             <div class="footer">
-                <p>Made with code, caffeine, and good vibes | Deployed with care</p>
+                <p>Made with code, caffeine, and good vibes | Deployed with care by Mr.X</p>
             </div>
         </div>
     </div>
